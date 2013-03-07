@@ -11,11 +11,12 @@ var options = [
 
 $(document).ready(function() {
 	$('#RightClickArea').customMenu({
+		filter: 'td',
 		option_list_callback: function() {
 			return options;
 		},
-		item_selected: function(data) {
-			alert('You selected: ' + data.label);
+		item_selected: function(element, data) {
+			alert('You selected: ' + data.label + ' in cell ' + element.html());
 		}
 	});
 });

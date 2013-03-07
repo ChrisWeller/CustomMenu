@@ -1,5 +1,5 @@
 /*!
- * jQuery CustomMenu Plugin 0.0.1
+ * jQuery CustomMenu Plugin 0.0.2
  *
  * http://www.trunknetworks.com/
  *
@@ -15,11 +15,14 @@
 
 		//Defaults:
 		this.defaults = {
+			// Filter to allow menu to be linked to specific elements within the main item (ie cells within a table)
+			filter: null,
+
 			// Returns an array of options to display [{label: 'name'}, {label: 'name2', options:[]}]
 			option_list_callback: function() {
 				return []
 			},
-			item_selected: function() {
+			item_selected: function(element, data) {
 				
 			}
 		};
@@ -63,9 +66,10 @@
 				_this._hide_menu();
 			});
 
-			_this.$el.on('contextmenu', function(event) {
+			_this.$el.on('contextmenu', _this.opts.filter, function(event) {
 				var options = _this.opts.option_list_callback();
-				_this._show_menu(event, options);
+				var current_element = $(this);
+				_this._show_menu(current_element, event, options);
 				return false;
 			});
 		},
@@ -83,7 +87,7 @@
 		/**
 		 * Shows the requested menu
 		 */
-		_show_menu: function(event, options) {
+		_show_menu: function(element, event, options) {
 			var _this = this;
 
 			_this._hide_menu();
@@ -101,7 +105,7 @@
 			$('.MyMenu', _this.menu_holder).menu({
 				select: function(event, ui) {
 					if (typeof _this.opts.item_selected != 'undefined')
-						_this.opts.item_selected(ui.item.data('data'));
+						_this.opts.item_selected(element, ui.item.data('data'));
 					return false;
 				}
 			});

@@ -8,8 +8,15 @@ This jQuery UI menu plugin provides a simeple to use context-sensitive menu for 
 Include jQuery, jQuery UI and the plugin on a page. Then select an item or area to have a context sensitive menu on.
 
 ```html
-<div id="RightClickArea">
-</div>
+<table id="RightClickArea">
+	<thead>
+		<tr><th>Header 1</th><th>Header 2</th><th>Header 3</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>Cell 1</td><td>Cell 2</td><td>Cell 3</td></tr>
+		<tr><td>Cell 4</td><td>Cell 5</td><td>Cell 6</td></tr>
+	</tbody>
+</table>
 
 <script>
 	var options = [

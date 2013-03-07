@@ -44,7 +44,7 @@
 
 			if ($('#CustomMenuHolder', 'body').length == 0) {
 				// Create the div which will hold the menu
-				_this.menu_holder = $('<div style="display:none;position:absolute;" id="CustomMenuHolder"></div>');
+				_this.menu_holder = $('<div style="display:none;position:absolute;z-index:5000;" id="CustomMenuHolder"></div>');
 			}
 			else {
 				_this.menu_holder = $('#CustomMenuHolder', 'body');
@@ -67,8 +67,8 @@
 			});
 
 			_this.$el.on('contextmenu', _this.opts.filter, function(event) {
-				var options = _this.opts.option_list_callback();
 				var current_element = $(this);
+				var options = _this.opts.option_list_callback(current_element);
 				_this._show_menu(current_element, event, options);
 				return false;
 			});
@@ -125,6 +125,11 @@
 			// Iterate over the menu options
 			$.each(options, function(index, element) {
 				var new_option = $('<li><a href="#">' + element.label + '</a></li>').data('data', element);
+
+				// If the menu option has the disabled tag on it
+				if (typeof element.disabled != 'undefined')
+					if (element.disabled)	// If the menu option is actually to be disabled
+						new_option.addClass('ui-state-disabled');	// Disable the menu option
 
 				// If there are sub-menus...
 				if (typeof element.options != 'undefined') {

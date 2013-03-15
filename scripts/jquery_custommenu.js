@@ -124,6 +124,10 @@
 
 			// Iterate over the menu options
 			$.each(options, function(index, element) {
+				if (typeof element.seperator != 'undefined') {
+					$menu_ul.append("<li><hr/></li>");
+					return true;
+				}
 				var new_option = $('<li><a href="#">' + element.label + '</a></li>').data('data', element);
 
 				// If the menu option has the disabled tag on it

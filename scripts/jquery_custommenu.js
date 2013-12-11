@@ -90,6 +90,10 @@
 		_show_menu: function(element, event, options) {
 			var _this = this;
 
+			if (typeof _this.opts.pre_show !== 'undefined') {
+				_this.opts.pre_show( element );
+			}
+
 			_this._hide_menu();
 
 			// Position the menu holder

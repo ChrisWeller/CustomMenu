@@ -141,7 +141,7 @@
 
 				// If there are sub-menus...
 				if (typeof element.options != 'undefined') {
-					_this._build_menu(new_option, element.options);
+					_this._build_menu(new_option, element.options, element.use_class);
 				}
 
 				// Append the menu item to the main ul

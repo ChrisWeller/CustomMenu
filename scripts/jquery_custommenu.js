@@ -109,7 +109,7 @@
 			$('.MyMenu', _this.menu_holder).menu({
 				select: function(event, ui) {
 					if (typeof _this.opts.item_selected != 'undefined')
-						_this.opts.item_selected(element, ui.item.data('data'));
+						_this.opts.item_selected(element, ui.item.data('data'), ui.item );
 					return false;
 				}
 			});

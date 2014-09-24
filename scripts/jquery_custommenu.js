@@ -132,7 +132,7 @@
 					$menu_ul.append("<li><hr/></li>");
 					return true;
 				}
-				var new_option = $('<li>' + element.label + '</li>').data('data', element);
+				var new_option = $('<li style="font-weight:normal !important;">' + element.label + '</li>').data('data', element);
 
 				// If the menu option has the disabled tag on it
 				if (typeof element.disabled != 'undefined')

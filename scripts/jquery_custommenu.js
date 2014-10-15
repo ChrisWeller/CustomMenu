@@ -62,6 +62,16 @@
 			$(document).on('click', function(){
 				_this._hide_menu();
 			});
+			$(document).on('mousedown', function( event ){
+				// If this is a left click
+				if ( event.which == 1 ) {
+					// If the parent of what we're clicking on isn't the menu
+					if ( $( event.toElement ).parents( '#CustomMenuHolder' ).length == 0 ) {
+						// Hide the menu
+						_this._hide_menu();
+					}
+				}
+			});
 			$(document).on('contextmenu', function() {
 				_this._hide_menu();
 			});

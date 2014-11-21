@@ -66,7 +66,7 @@
 				// If this is a left click
 				if ( event.which == 1 ) {
 					// If the parent of what we're clicking on isn't the menu
-					if ( $( event.toElement ).parents( '#CustomMenuHolder' ).length == 0 ) {
+					if ( $( event.target ).parents( '#CustomMenuHolder' ).length == 0 ) {
 						// Hide the menu
 						_this._hide_menu();
 					}
